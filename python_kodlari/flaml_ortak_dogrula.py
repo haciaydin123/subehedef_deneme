@@ -1,4 +1,5 @@
 """Independent readback of the global algorithm decision and saved models."""
+import argparse
 import json
 from pathlib import Path
 import numpy as np
@@ -10,15 +11,17 @@ from flaml_tahmin import predict_saved
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'outputs/flaml_ortak_v4'
 
-def main():
+def main(output=None,source=None,search=None):
+    OUT=Path(output or ROOT/'outputs/flaml_ortak_v4').resolve()
+    source=Path(source or ROOT/'outputs/model_karsilastirma_v4').resolve()
+    search=Path(search or ROOT/'outputs/flaml_v4').resolve()
     m=json.loads((OUT/'manifest.json').read_text());d=json.loads((OUT/'ortak_model_secimi.json').read_text())
-    source=ROOT/'outputs/model_karsilastirma_v4'
     for name,digest in m['training_input_hashes'].items():
         assert sha(OUT/'veri'/name)==sha(source/'veri'/name)==digest
     for name,digest in m['incumbent_hashes'].items():assert sha(source/name)==digest
     for name,digest in m['code_hashes'].items():assert sha(ROOT/'python_kodlari'/name)==digest
     for name,digest in m['search_log_hashes'].items():
-        assert sha(OUT/'aramalar'/name)==sha(ROOT/'outputs/flaml_v4/aramalar'/name)==digest
+        assert sha(OUT/'aramalar'/name)==sha(search/'aramalar'/name)==digest
     frames={key:pd.read_csv(OUT/'veri'/f'{key}.csv') for key in ['train','validation','test','ocak2027_tahmin_girdisi']}
     assert frames['train'].hedef_donemi.max()<frames['validation'].hedef_donemi.min()
     assert frames['validation'].hedef_donemi.max()<frames['test'].hedef_donemi.min()
@@ -93,4 +96,9 @@ def main():
     (OUT/'manifest.json').write_text(json.dumps(m,ensure_ascii=False,indent=2))
     print('PASS: single global algorithm, equal-weight validation selection, 30 model reloads, all metrics and hashes.')
 
-if __name__=='__main__':main()
+if __name__=='__main__':
+    p=argparse.ArgumentParser()
+    p.add_argument('--output',type=Path,default=OUT)
+    p.add_argument('--source',type=Path,default=ROOT/'outputs/model_karsilastirma_v4')
+    p.add_argument('--search',type=Path,default=ROOT/'outputs/flaml_v4')
+    a=p.parse_args();main(a.output,a.source,a.search)

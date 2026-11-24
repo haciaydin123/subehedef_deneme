@@ -7,6 +7,7 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 .mypy_cache/
+.ipynb_checkpoints/
 .DS_Store
 *.log
 
@@ -28,4 +29,7 @@ __pycache__/
 !/outputs/banka_test_verisi_v4/subeler.csv
 !/outputs/banka_test_verisi_v4/bolgeler_sentetik.csv
 !/outputs/banka_test_verisi_v4/ocak2027_banka_hedefleri.csv
+!/outputs/banka_test_verisi_v4/manifest.json
+!/outputs/banka_test_verisi_v4/sube_aylik.csv
+!/outputs/banka_test_verisi_v4/sube_stok_mutabakat.csv
 

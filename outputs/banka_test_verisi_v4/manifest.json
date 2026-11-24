@@ -1,0 +1,147 @@
+{
+  "version": 4,
+  "seed": 20261121,
+  "source_version": 3,
+  "synthetic_financial_data": true,
+  "initial_customers": 10127,
+  "registered_customers": 12378,
+  "latest_active_customers": 11790,
+  "branches": 200,
+  "months": 26,
+  "start": "2024-11",
+  "end": "2026-12",
+  "customer_month_rows": 292937,
+  "customer_branch_month_rows": 289546,
+  "event_rows": 812235,
+  "branch_month_rows": 5200,
+  "event_counts": {
+    "RUTIN_BAKIYE_HAREKETI": 285996,
+    "KREDI_TAKSIT_ODEMESI": 127479,
+    "KART_ODEME_VE_KULLANIM": 285803,
+    "BES_KATKI_VE_GETIRI": 87080,
+    "YENI_URUN_ACILISI": 4283,
+    "DIGER_BANKADAN_KAYNAK_GIRISI": 5159,
+    "DIGER_BANKAYA_KAYNAK_CIKISI": 4348,
+    "VADE_DONUSU": 3816,
+    "SUBE_DEVRI": 3472,
+    "AYRILIS_BORC_KAPAMA": 588,
+    "BANKADAN_TAM_AYRILMA": 588,
+    "URUN_KAPAMA_VE_IC_AKTARIM": 1372,
+    "YENI_MUSTERI": 2251
+  },
+  "one_generation_mechanism_for_all_months": true,
+  "source_v3_unchanged": true,
+  "source_profile_sha256": "122fb17c1755c65288129bfb8cba2140161f9d24f9f451f5e1a819e26ad412b3",
+  "source_input_hashes": {
+    "musteriler.csv": "122fb17c1755c65288129bfb8cba2140161f9d24f9f451f5e1a819e26ad412b3",
+    "musteri_aylik.csv": "1000004048895da7e46691ae54b81834cd3ca062301e031eebf3be4ea557ce8f",
+    "subeler.csv": "27eb0b3ba4e9ca28ebaafd9374d5977facd5b430b72f57871eff19db1c6f456c",
+    "bolgeler_sentetik.csv": "f4a947b2f6ed2c1c011964cda591351bb0c633c333be6fb4ebdb72f94e6209e6",
+    "veri_sozlugu.csv": "bcce0e6f33832a39c38fd8dd0ab410ff553651fe0c37e5f2e32f69a76efe8a78"
+  },
+  "target_growth": {
+    "TL_VADESIZ_ORT": 0.15,
+    "TL_VADELI_ORT": 0.1,
+    "BIREYSEL_KREDI_ORT": 0.05
+  },
+  "models_retrained": false,
+  "checks": {
+    "independent_event_replay_all_customer_months": true,
+    "all_stock_nonnegative_and_card_within_limit": true,
+    "daily_calendar_weighted_averages": true,
+    "customer_branch_parts_reconcile_exactly": true,
+    "branch_transfer_preserves_bank_stock": true,
+    "all_15600_branch_stock_rollforwards": true,
+    "new_customer_exit_count_rollforward": true,
+    "post_exit_zero_bank_balances_and_unknown_external_risk": true,
+    "dynamic_branch_demographics": true,
+    "hp_ratio_approximately_15_active_customers": true,
+    "source_v3_hashes_unchanged": true,
+    "all_output_csv_hashes": true,
+    "january_bank_targets": true,
+    "boundary_timing_cases": true
+  },
+  "generation_seconds": 57.6587958750315,
+  "csv_files": {
+    "acilis_bakiyeleri.csv": {
+      "bytes": 820496,
+      "sha256": "2cfd9506bdc8161ed06aa3cca5b82ddcf05523792b480c75e9a526d8553ce5fd"
+    },
+    "banka_aylik.csv": {
+      "bytes": 3377,
+      "sha256": "c72fe9eedc6f6cb88bbaf733cb9cf85ef3bcfaf1929facef73781184fbf56384"
+    },
+    "bolgeler_sentetik.csv": {
+      "bytes": 2732,
+      "sha256": "f4a947b2f6ed2c1c011964cda591351bb0c633c333be6fb4ebdb72f94e6209e6"
+    },
+    "musteri_aylik.csv": {
+      "bytes": 146757746,
+      "sha256": "3ea38d65fcd8ede4e6921a58dec2cd435d1176391baaabecec2313e3a172c17f"
+    },
+    "musteri_olaylari.csv": {
+      "bytes": 106437377,
+      "sha256": "2fa41c3d95648560c58f2d9813ca4565c58ea7aa93c568f3fdf762c8d0ab0acd"
+    },
+    "musteri_son_donem.csv": {
+      "bytes": 6180211,
+      "sha256": "2f914e567cdd844bc7f1e22dcbd01881de3780c9b5c7d1f30836b9699512fec5"
+    },
+    "musteri_sube_aylik.csv": {
+      "bytes": 46320803,
+      "sha256": "8e73e4bd6ae85154520f58b7e646becb18f8b791fd52f4504a45bc66ff312b40"
+    },
+    "musteriler.csv": {
+      "bytes": 1211569,
+      "sha256": "d1ce04c25fa6c06d1b9bb6371caa2be5b502922810b96dfb70392651339abf5d"
+    },
+    "ocak2027_banka_hedefleri.csv": {
+      "bytes": 438,
+      "sha256": "22bde02e24dfbf14fd8922e568b7e5ca7c871b0b9614489acc533351eb5f62a0"
+    },
+    "olay_ornekleri.csv": {
+      "bytes": 4186,
+      "sha256": "24ff83c631f5c197c7abebca415f4f72a05244f5e69936e4d045a1ade44c3901"
+    },
+    "segment_esikleri.csv": {
+      "bytes": 9472,
+      "sha256": "670ac7dd77c46a589a6197dd08c3b77dcc79918d23a1a1db105f1035bbd584ea"
+    },
+    "sube_aylik.csv": {
+      "bytes": 2087922,
+      "sha256": "b65fab77ac4354349efc47497e21b907cc4c259e4171dc1074493a2069c27636"
+    },
+    "sube_hareket_ozeti.csv": {
+      "bytes": 188449,
+      "sha256": "68b1c641a22083a91656f78de75f26eb6b8e8f3cec0c424cd8139821374383b6"
+    },
+    "sube_hp_aylik.csv": {
+      "bytes": 674759,
+      "sha256": "2cba5d0d2c8cadefe0f54f62608359f5293d02dd520fd6dcf38f1aa056bdfa13"
+    },
+    "sube_model_girdileri_aylik.csv": {
+      "bytes": 3590295,
+      "sha256": "88862bd5ed873870a5dd327b54c1b854ed0f09ef757e787bd8ceb9b78d7c8ac1"
+    },
+    "sube_stok_mutabakat.csv": {
+      "bytes": 910184,
+      "sha256": "e424bbd2dcb81aae5806647003868a838fbed2d81c8cee07e0254c8f56f20c3f"
+    },
+    "subeler.csv": {
+      "bytes": 16654,
+      "sha256": "27eb0b3ba4e9ca28ebaafd9374d5977facd5b430b72f57871eff19db1c6f456c"
+    },
+    "veri_sozlugu.csv": {
+      "bytes": 79022,
+      "sha256": "81affd9d638f42c115fb29cc948b2e72a3fc0d8635074b59db1e8ed3804bd50e"
+    }
+  },
+  "demographic_source_url": "https://www.kaggle.com/datasets/sakshigoyal7/credit-card-customers",
+  "demographic_source_license": "CC0: Public Domain",
+  "summary_workbook": {
+    "file": "banka_test_verisi_v4_ozet.xlsx",
+    "bytes": 9167,
+    "sha256": "99ec1c451b9f946250153e760f33443a95d6255eef6b0a8069839a22de9f9c2d",
+    "formula_and_render_checks": true
+  }
+}

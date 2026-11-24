@@ -9,6 +9,21 @@ karşılaştırılması, ortak model seçimi ve küme içi DEA verimlilik analiz
 bakiyesidir. İstanbul, Ankara ve İzmir bir coğrafi grup; diğer iller ikinci
 gruptur. Yöntem ve senaryo bütün göstergeler ve iki grup için ortak seçilir.
 
+## Jupyter ile çalıştırma
+
+**[00_baslangic.ipynb](notebooks/00_baslangic.ipynb)** ile başlayın. Yedi notebook;
+veri hazırlama, model karşılaştırma / FLAML, dinamik değişken seçimi, kümeleme,
+DEA ve yeni ay uygulamasını açıklamalı hücrelerle sunar. İlk çalıştırmada hazır
+sonuçlar incelenir; eğitimler ayar hücrelerinden açılır ve `outputs/jupyter/`
+altına kaydedilir. Mevcut `.py` modülleri hesaplama kaynağı olarak korunur.
+
+```bash
+python -m pip install -r python_kodlari/requirements_jupyter.txt
+python -m jupyter lab notebooks/00_baslangic.ipynb
+```
+
+Ayrıntılar ve kernel seçimi: [Jupyter rehberi](notebooks/README.md).
+
 ## Dashboard'u açma
 
 Python 3 ve tarayıcı yeterlidir; dashboard modeli yeniden eğitmez. İndirme
@@ -45,10 +60,11 @@ tarihsel kontrol dönemidir; dokunulmamış test değildir.
 ## Kod ve örnek veri
 
 - `python_kodlari/`: Python komutları, model modülleri, testler ve ayarlar.
+- `notebooks/`: Jupyter `.ipynb` dosyaları ve ortak çalışma yardımcıları.
 - `model_dashboard/dist/`: hazır HTML/CSS/JavaScript dashboard ve sonuç anlık görüntüsü.
 - `model_dashboard/dist/downloads/`: raporlar, sözlükler ve Git LFS model arşivleri.
 - `outputs/banka_test_verisi_v4/`: 200 şube × 26 aylık sentetik şube girdisi,
-  şube/bölge tanımları ve örnek banka hedefleri.
+  şube/bölge tanımları, stok mutabakatı, veri manifesti ve örnek banka hedefleri.
 
 Sanal ortamlar, önbellekler, müşteri düzeyindeki büyük ara tablolar ve bütün
 tarihsel koşu klasörleri Git'e alınmaz. Hazır dashboard, Python eğitim ortamı

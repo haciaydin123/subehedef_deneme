@@ -1,5 +1,11 @@
 # Banka modeli Python kodları
 
+Jupyter kullanımı için [notebooks/00_baslangic.ipynb](../notebooks/00_baslangic.ipynb)
+ile başlayın. Yedi açıklamalı notebook bu modülleri aynı hesaplama kurallarıyla
+çağırır. Kurulum: `python -m pip install -r python_kodlari/requirements_jupyter.txt`.
+Yeni notebook denemeleri `outputs/jupyter/` altında tutulur; tarihsel ana koşular
+değiştirilmez. Ayrıntılar: [Jupyter rehberi](../notebooks/README.md).
+
 Güncel seçim politikası her coğrafi grupta en az 0.10 doğrulama silhouette
 ortalaması arar. Bu pilot koşulu mevcut adaylar sağlamadığı için onaylı ana
 model yoktur; yeni atama/DEA başlatılmaz. Önceki sonuçlar tarihsel olarak

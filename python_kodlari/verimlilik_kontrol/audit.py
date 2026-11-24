@@ -142,6 +142,8 @@ def run(policy_path,dea_run=None,output=None):
     policy_path=Path(policy_path).resolve();policy=read(policy_path);base=read(policy_path.parent/policy['base_config'])
     if policy['perturbation_repeats']<2 or not 0<policy['relative_perturbation']<.1:raise ValueError('Invalid stress policy')
     dea_run=Path(dea_run or read(ROOT/'outputs/dea_verimlilik/latest.json')['path']).resolve();dm=read(dea_run/'manifest.json')
+    latest_pointer=dea_run.parent/'latest.json'
+    latest_pointer_before=latest_pointer.read_bytes() if latest_pointer.exists() else None
     for name,digest in dm['artifact_hashes'].items():
         if sha(dea_run/name)!=digest:raise ValueError('Stale main DEA artifact: '+name)
     if not dm['checks'] or not all(dm['checks'].values()) or base!=read(dea_run/'config.json'):raise ValueError('Audited base config must match current verified DEA')
@@ -221,7 +223,7 @@ def run(policy_path,dea_run=None,output=None):
     shutil.copy2(Path(__file__).parents[1]/'requirements_dea.txt',out/'requirements.txt')
     manifest={'run_id':out.name,'as_of':latest,'source_dea_run_id':dm['run_id'],'source_dea_path':str(dea_run),'source_dea_manifest_sha256':sha(dea_run/'manifest.json'),
         'source_selection_run_id':sm['run_id'],'source_selection_manifest_sha256':sha(selection/'manifest.json'),'source_data_sha256':sha(source),'periods':periods,
-        'scenario_names':NAMES,'main_model_changed':False,'dea_latest_pointer_unchanged':read(ROOT/'outputs/dea_verimlilik/latest.json')['path']==str(dea_run),
+        'scenario_names':NAMES,'main_model_changed':False,'dea_latest_pointer_unchanged':(latest_pointer.read_bytes() if latest_pointer.exists() else None)==latest_pointer_before,
         'local_stress_records':len(local),'peer_removal_records':len(removal),'checks':{}}
     manifest['artifact_hashes']={str(p.relative_to(out)):sha(p) for p in sorted(out.rglob('*')) if p.is_file()}
     save(out/'manifest.json',manifest)

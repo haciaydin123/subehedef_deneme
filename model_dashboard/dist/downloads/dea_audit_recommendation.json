@@ -1,0 +1,16 @@
+{
+  "recommended_scenario": "customer",
+  "status": "baseline_with_review",
+  "review_reasons": [
+    "influential_peer_review"
+  ],
+  "augmented_coverage": 1.0,
+  "augmented_withheld": 0,
+  "augmented_global_eligible": true,
+  "main_model_changed": false,
+  "higher_efficiency_is_selection_objective": false,
+  "business_roles_inferred_from_data": false,
+  "scope": "customer_base_relative_production",
+  "real_staff_changes_tested": false,
+  "all_results_reused_historical_synthetic": true
+}

@@ -1,0 +1,29 @@
+{
+  "status": "no_qualified_model",
+  "selected": null,
+  "reason": "Hiçbir aday bütün pilot kalite ve boyut koşullarını sağlamadı.",
+  "validation_periods": [
+    "2026-10",
+    "2026-11"
+  ],
+  "reference_period": "2026-09",
+  "scope": "one_method_and_scenario_for_all_indicators_and_groups",
+  "weights": {
+    "silhouette": 0.3,
+    "refit_ari": 0.3,
+    "subsample_ari": 0.25,
+    "seed_ari": 0.15
+  },
+  "thresholds": {
+    "min_cluster_size": 15,
+    "silhouette": 0.1,
+    "refit_ari": 0.6,
+    "subsample_ari": 0.6,
+    "seed_ari": 0.6,
+    "worst_group_refit_ari": 0.4,
+    "worst_group_silhouette": 0.1
+  },
+  "score_is_accuracy": false,
+  "coverage_required": true,
+  "required_min_cluster_size": 15
+}

@@ -1,0 +1,139 @@
+{
+  "version": 1,
+  "require_full_coverage": true,
+  "configured_min_cluster_size": 12,
+  "required_min_cluster_size": 15,
+  "outputs": [
+    {
+      "name": "tl_vadesiz",
+      "source": "tl_vadesiz_ort_bakiye_tl",
+      "transform": "identity"
+    },
+    {
+      "name": "tl_vadeli",
+      "source": "tl_vadeli_ort_bakiye_tl",
+      "transform": "identity"
+    },
+    {
+      "name": "kredi",
+      "source": "kredi_ort_bakiye_tl",
+      "transform": "identity"
+    }
+  ],
+  "scenarios": [
+    {
+      "scenario": "customer",
+      "inputs": [
+        {
+          "name": "ortalama_aktif_musteri",
+          "source": "musteri_gun",
+          "transform": "divide_by_calendar_days"
+        }
+      ],
+      "input_count": 1,
+      "output_count": 3,
+      "required_n": 12
+    },
+    {
+      "scenario": "customer_staff",
+      "inputs": [
+        {
+          "name": "ortalama_aktif_musteri",
+          "source": "musteri_gun",
+          "transform": "divide_by_calendar_days"
+        },
+        {
+          "name": "personel_fte",
+          "source": "personel_fte_sentetik",
+          "transform": "identity"
+        }
+      ],
+      "input_count": 2,
+      "output_count": 3,
+      "required_n": 15
+    }
+  ],
+  "on_incomplete_coverage": "error",
+  "size_rule_is_pilot_heuristic": true,
+  "coverage_is_not_statistical_adequacy": true,
+  "source_definitions": {
+    "base": {
+      "version": 1,
+      "input": {
+        "path": "../../outputs/banka_test_verisi_v4/sube_model_girdileri_aylik.csv",
+        "keys": {
+          "branch": "sube_id",
+          "period": "donem",
+          "group": "buyuk_sehir_grubu"
+        },
+        "filters": {
+          "is_birimi": [
+            "BIREYSEL"
+          ]
+        }
+      },
+      "inputs": [
+        {
+          "name": "ortalama_aktif_musteri",
+          "source": "musteri_gun",
+          "transform": "divide_by_calendar_days",
+          "label": "Aylık ortalama aktif müşteri sayısı",
+          "unit": "müşteri"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "tl_vadesiz",
+          "source": "tl_vadesiz_ort_bakiye_tl",
+          "label": "TL vadesiz aylık ortalama bakiye",
+          "unit": "TL"
+        },
+        {
+          "name": "tl_vadeli",
+          "source": "tl_vadeli_ort_bakiye_tl",
+          "label": "TL vadeli aylık ortalama bakiye",
+          "unit": "TL"
+        },
+        {
+          "name": "kredi",
+          "source": "kredi_ort_bakiye_tl",
+          "label": "Kredi aylık ortalama bakiye",
+          "unit": "TL"
+        }
+      ],
+      "model": "output_oriented_CRS_two_phase",
+      "vrs_sensitivity": true,
+      "min_units_policy": "max(m*s,3*(m+s))",
+      "insufficient_cluster_policy": "error",
+      "tolerance": 1e-07,
+      "high_radial_growth_flag": 1.0,
+      "high_radial_efficiency_share_flag": 0.5
+    },
+    "input_audit": {
+      "version": 1,
+      "base_config": "dea_v4.json",
+      "additional_inputs": [
+        {
+          "name": "personel_fte",
+          "source": "personel_fte_sentetik",
+          "label": "Sentetik personel kapasitesi",
+          "unit": "FTE",
+          "transform": "identity"
+        }
+      ],
+      "seed": 20261121,
+      "perturbation_repeats": 20,
+      "relative_perturbation": 0.01,
+      "stable_profile_relative_change": 0.05,
+      "material_score_change": 0.01,
+      "local_score_p95_review": 0.03,
+      "peer_removal_max_review": 0.1,
+      "correlation_review": 0.9,
+      "minimum_global_coverage": 1.0
+    }
+  },
+  "source_hashes": {
+    "/Users/osman2/Desktop/hedef/python_kodlari/ayarlar/dea_v4.json": "3751304c7e777422d30f0f27d837b536b47d2bdc8efaa90540ca9a1148f8dd6e",
+    "/Users/osman2/Desktop/hedef/python_kodlari/ayarlar/dea_girdi_kontrol.json": "da36a3291fab17bf3d8b24671413f99413b1ac48dfba3c0bc0318e8f3adda3fd"
+  }
+}

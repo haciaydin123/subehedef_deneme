@@ -1,0 +1,672 @@
+{
+  "version": 1,
+  "description": "V4 örneği: sözlükten dinamik, geçmiş dönemli CatBoost destekli kümeleme değişken seçimi",
+  "input": {
+    "path": "../../outputs/banka_test_verisi_v4/sube_model_girdileri_aylik.csv",
+    "grain": "branch_month",
+    "encoding": "utf-8-sig",
+    "keys": {
+      "branch": "sube_id",
+      "period": "donem",
+      "group": "buyuk_sehir_grubu"
+    },
+    "filters": {
+      "is_birimi": [
+        "BIREYSEL"
+      ]
+    }
+  },
+  "fields": [
+    {
+      "name": "is_birimi",
+      "source": "is_birimi",
+      "label": "is_birimi",
+      "dtype": "categorical",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "ilce_id",
+      "source": "ilce_id",
+      "label": "ilce_id",
+      "dtype": "categorical",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "il",
+      "source": "il",
+      "label": "il",
+      "dtype": "categorical",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "sube_segmenti",
+      "source": "sube_segmenti",
+      "label": "sube_segmenti",
+      "dtype": "categorical",
+      "role": "review",
+      "reason": "Banka içi varlık/segment veya idari tanım; bağımsız potansiyel olarak iş incelemesi gerekli",
+      "family": "varlik_segmenti",
+      "production_proxy": true
+    },
+    {
+      "name": "ekonomik_yapi_sentetik",
+      "source": "ekonomik_yapi_sentetik",
+      "label": "Sentetik ekonomik yapı; native categorical",
+      "dtype": "categorical",
+      "role": "candidate",
+      "reason": "Müşteri yapısı, kapasite veya bölgesel koşul adayı",
+      "known_by_period_end": true,
+      "availability_lag_months": 0,
+      "family": "bolgesel_kosullar",
+      "priority": 50
+    },
+    {
+      "name": "sosyoekonomik_skor_sentetik",
+      "source": "sosyoekonomik_skor_sentetik",
+      "label": "Sentetik ekonomik çevre skoru; SEGE değildir",
+      "dtype": "numeric",
+      "role": "candidate",
+      "reason": "Müşteri yapısı, kapasite veya bölgesel koşul adayı",
+      "known_by_period_end": true,
+      "availability_lag_months": 0,
+      "family": "bolgesel_kosullar",
+      "priority": 50
+    },
+    {
+      "name": "rakip_sube_sayisi_sentetik",
+      "source": "rakip_sube_sayisi_sentetik",
+      "label": "Sentetik rakip şube sayısı",
+      "dtype": "numeric",
+      "role": "candidate",
+      "reason": "Müşteri yapısı, kapasite veya bölgesel koşul adayı",
+      "known_by_period_end": true,
+      "availability_lag_months": 0,
+      "family": "bolgesel_kosullar",
+      "priority": 50
+    },
+    {
+      "name": "nufus_sentetik",
+      "source": "nufus_sentetik",
+      "label": "Sentetik ilçe nüfusu",
+      "dtype": "numeric",
+      "role": "candidate",
+      "reason": "Müşteri yapısı, kapasite veya bölgesel koşul adayı",
+      "known_by_period_end": true,
+      "availability_lag_months": 0,
+      "family": "bolgesel_kosullar",
+      "priority": 50
+    },
+    {
+      "name": "personel_fte_sentetik",
+      "source": "personel_fte_sentetik",
+      "label": "Test portföyüne ait personel kapasitesi",
+      "dtype": "numeric",
+      "role": "candidate",
+      "reason": "Müşteri yapısı, kapasite veya bölgesel koşul adayı",
+      "known_by_period_end": true,
+      "availability_lag_months": 0,
+      "family": "kapasite",
+      "priority": 50
+    },
+    {
+      "name": "musteri_sayisi",
+      "source": "musteri_sayisi",
+      "label": "Şubedeki müşteri sayısı",
+      "dtype": "numeric",
+      "role": "candidate",
+      "reason": "Müşteri yapısı, kapasite veya bölgesel koşul adayı",
+      "known_by_period_end": true,
+      "availability_lag_months": 0,
+      "family": "kapasite",
+      "priority": 10
+    },
+    {
+      "name": "ay_ici_hizmet_verilen_musteri_sayisi",
+      "source": "ay_ici_hizmet_verilen_musteri_sayisi",
+      "label": "ay_ici_hizmet_verilen_musteri_sayisi",
+      "dtype": "numeric",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "musteri_gun",
+      "source": "musteri_gun",
+      "label": "musteri_gun",
+      "dtype": "numeric",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "ortalama_yas",
+      "source": "ortalama_yas",
+      "label": "Müşteri yaş ortalaması",
+      "dtype": "numeric",
+      "role": "candidate",
+      "reason": "Müşteri yapısı, kapasite veya bölgesel koşul adayı",
+      "known_by_period_end": true,
+      "availability_lag_months": 0,
+      "family": "demografi",
+      "priority": 10
+    },
+    {
+      "name": "ortalama_aylik_gelir_tl",
+      "source": "ortalama_aylik_gelir_tl",
+      "label": "Müşterilerin aylık gelir ortalaması",
+      "dtype": "numeric",
+      "role": "candidate",
+      "reason": "Müşteri yapısı, kapasite veya bölgesel koşul adayı",
+      "known_by_period_end": true,
+      "availability_lag_months": 0,
+      "family": "gelir_profili",
+      "priority": 10
+    },
+    {
+      "name": "mobil_aktif_orani",
+      "source": "mobil_aktif_orani",
+      "label": "Mobil aktif müşteri oranı",
+      "dtype": "numeric",
+      "role": "candidate",
+      "reason": "Müşteri yapısı, kapasite veya bölgesel koşul adayı",
+      "known_by_period_end": true,
+      "availability_lag_months": 0,
+      "family": "iliski_aktivite",
+      "priority": 50
+    },
+    {
+      "name": "maas_musterisi_orani",
+      "source": "maas_musterisi_orani",
+      "label": "Maaş müşterisi oranı",
+      "dtype": "numeric",
+      "role": "candidate",
+      "reason": "Müşteri yapısı, kapasite veya bölgesel koşul adayı",
+      "known_by_period_end": true,
+      "availability_lag_months": 0,
+      "family": "iliski_aktivite",
+      "priority": 50
+    },
+    {
+      "name": "ortalama_iliski_skoru",
+      "source": "ortalama_iliski_skoru",
+      "label": "ortalama_iliski_skoru",
+      "dtype": "numeric",
+      "role": "candidate",
+      "reason": "Mevcut ay ilişki profili adayı",
+      "known_by_period_end": true,
+      "family": "iliski_aktivite",
+      "priority": 60
+    },
+    {
+      "name": "havuz_musteri_sayisi",
+      "source": "havuz_musteri_sayisi",
+      "label": "havuz_musteri_sayisi",
+      "dtype": "numeric",
+      "role": "review",
+      "reason": "Banka içi varlık/segment veya idari tanım; bağımsız potansiyel olarak iş incelemesi gerekli",
+      "family": "varlik_segmenti",
+      "production_proxy": true
+    },
+    {
+      "name": "portfoy_musteri_sayisi",
+      "source": "portfoy_musteri_sayisi",
+      "label": "portfoy_musteri_sayisi",
+      "dtype": "numeric",
+      "role": "review",
+      "reason": "Banka içi varlık/segment veya idari tanım; bağımsız potansiyel olarak iş incelemesi gerekli",
+      "family": "varlik_segmenti",
+      "production_proxy": true
+    },
+    {
+      "name": "havuz_portfoy_orani",
+      "source": "havuz_portfoy_orani",
+      "label": "havuz_portfoy_orani",
+      "dtype": "numeric",
+      "role": "review",
+      "reason": "Banka içi varlık/segment veya idari tanım; bağımsız potansiyel olarak iş incelemesi gerekli",
+      "family": "varlik_segmenti",
+      "production_proxy": true
+    },
+    {
+      "name": "tl_vadesiz",
+      "source": "tl_vadesiz_ort_bakiye_tl",
+      "label": "TL vadesiz ortalaması",
+      "dtype": "numeric",
+      "role": "target",
+      "reason": "Açıklanacak üretim; X içine alınmaz",
+      "required": true
+    },
+    {
+      "name": "doviz_vadesiz_ort_bakiye_tl",
+      "source": "doviz_vadesiz_ort_bakiye_tl",
+      "label": "doviz_vadesiz_ort_bakiye_tl",
+      "dtype": "numeric",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "altin_hesabi_ort_bakiye_tl",
+      "source": "altin_hesabi_ort_bakiye_tl",
+      "label": "altin_hesabi_ort_bakiye_tl",
+      "dtype": "numeric",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "tl_vadeli",
+      "source": "tl_vadeli_ort_bakiye_tl",
+      "label": "TL vadeli ortalaması",
+      "dtype": "numeric",
+      "role": "target",
+      "reason": "Açıklanacak üretim; X içine alınmaz",
+      "required": true
+    },
+    {
+      "name": "doviz_vadeli_ort_bakiye_tl",
+      "source": "doviz_vadeli_ort_bakiye_tl",
+      "label": "doviz_vadeli_ort_bakiye_tl",
+      "dtype": "numeric",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "ihtiyac_kredi_ort_bakiye_tl",
+      "source": "ihtiyac_kredi_ort_bakiye_tl",
+      "label": "ihtiyac_kredi_ort_bakiye_tl",
+      "dtype": "numeric",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "konut_kredi_ort_bakiye_tl",
+      "source": "konut_kredi_ort_bakiye_tl",
+      "label": "konut_kredi_ort_bakiye_tl",
+      "dtype": "numeric",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "tasit_kredi_ort_bakiye_tl",
+      "source": "tasit_kredi_ort_bakiye_tl",
+      "label": "tasit_kredi_ort_bakiye_tl",
+      "dtype": "numeric",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "kmh_ort_bakiye_tl",
+      "source": "kmh_ort_bakiye_tl",
+      "label": "kmh_ort_bakiye_tl",
+      "dtype": "numeric",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "fon_ort_bakiye_tl",
+      "source": "fon_ort_bakiye_tl",
+      "label": "fon_ort_bakiye_tl",
+      "dtype": "numeric",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "hisse_ort_bakiye_tl",
+      "source": "hisse_ort_bakiye_tl",
+      "label": "hisse_ort_bakiye_tl",
+      "dtype": "numeric",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "tahvil_bono_ort_bakiye_tl",
+      "source": "tahvil_bono_ort_bakiye_tl",
+      "label": "tahvil_bono_ort_bakiye_tl",
+      "dtype": "numeric",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "kart_borc_ort_tl",
+      "source": "kart_borc_ort_tl",
+      "label": "kart_borc_ort_tl",
+      "dtype": "numeric",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "vadesiz_ort_bakiye_tl",
+      "source": "vadesiz_ort_bakiye_tl",
+      "label": "vadesiz_ort_bakiye_tl",
+      "dtype": "numeric",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "vadeli_ort_bakiye_tl",
+      "source": "vadeli_ort_bakiye_tl",
+      "label": "vadeli_ort_bakiye_tl",
+      "dtype": "numeric",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "kredi",
+      "source": "kredi_ort_bakiye_tl",
+      "label": "Kredi ortalaması",
+      "dtype": "numeric",
+      "role": "target",
+      "reason": "Açıklanacak üretim; X içine alınmaz",
+      "required": true
+    },
+    {
+      "name": "yatirim_ort_bakiye_tl",
+      "source": "yatirim_ort_bakiye_tl",
+      "label": "yatirim_ort_bakiye_tl",
+      "dtype": "numeric",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "toplam_varlik_ort_tl",
+      "source": "toplam_varlik_ort_tl",
+      "label": "toplam_varlik_ort_tl",
+      "dtype": "numeric",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "yeni_musteri_sayisi",
+      "source": "yeni_musteri_sayisi",
+      "label": "yeni_musteri_sayisi",
+      "dtype": "numeric",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "ayrilan_musteri_sayisi",
+      "source": "ayrilan_musteri_sayisi",
+      "label": "ayrilan_musteri_sayisi",
+      "dtype": "numeric",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "devir_giris_musteri_sayisi",
+      "source": "devir_giris_musteri_sayisi",
+      "label": "devir_giris_musteri_sayisi",
+      "dtype": "numeric",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "devir_cikis_musteri_sayisi",
+      "source": "devir_cikis_musteri_sayisi",
+      "label": "devir_cikis_musteri_sayisi",
+      "dtype": "numeric",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "diger_bankaya_kaynak_cikisi_tl",
+      "source": "diger_bankaya_kaynak_cikisi_tl",
+      "label": "diger_bankaya_kaynak_cikisi_tl",
+      "dtype": "numeric",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "diger_bankadan_kaynak_girisi_tl",
+      "source": "diger_bankadan_kaynak_girisi_tl",
+      "label": "diger_bankadan_kaynak_girisi_tl",
+      "dtype": "numeric",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "tl_vadesiz_ay_sonu_bakiye_tl",
+      "source": "tl_vadesiz_ay_sonu_bakiye_tl",
+      "label": "tl_vadesiz_ay_sonu_bakiye_tl",
+      "dtype": "numeric",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "tl_vadeli_ay_sonu_bakiye_tl",
+      "source": "tl_vadeli_ay_sonu_bakiye_tl",
+      "label": "tl_vadeli_ay_sonu_bakiye_tl",
+      "dtype": "numeric",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "kredi_ay_sonu_bakiye_tl",
+      "source": "kredi_ay_sonu_bakiye_tl",
+      "label": "kredi_ay_sonu_bakiye_tl",
+      "dtype": "numeric",
+      "role": "excluded",
+      "reason": "Mevcut üretim/hareket veya idari bilgi; ilk emsal kümeleme setinin dışında"
+    },
+    {
+      "name": "yas_std",
+      "source": "yas_std",
+      "label": "Yaş standart sapması",
+      "dtype": "numeric",
+      "role": "candidate",
+      "reason": "Müşteri yapısı, kapasite veya bölgesel koşul adayı",
+      "known_by_period_end": true,
+      "availability_lag_months": 0,
+      "family": "demografi",
+      "priority": 50
+    },
+    {
+      "name": "yas_35_alti_orani",
+      "source": "yas_35_alti_orani",
+      "label": "35 yaş altı müşteri oranı",
+      "dtype": "numeric",
+      "role": "candidate",
+      "reason": "Müşteri yapısı, kapasite veya bölgesel koşul adayı",
+      "known_by_period_end": true,
+      "availability_lag_months": 0,
+      "family": "demografi",
+      "priority": 50
+    },
+    {
+      "name": "yas_60_ustu_orani",
+      "source": "yas_60_ustu_orani",
+      "label": "60 yaş ve üzeri müşteri oranı",
+      "dtype": "numeric",
+      "role": "candidate",
+      "reason": "Müşteri yapısı, kapasite veya bölgesel koşul adayı",
+      "known_by_period_end": true,
+      "availability_lag_months": 0,
+      "family": "demografi",
+      "priority": 50
+    },
+    {
+      "name": "bakim_yukumlulugu_ort",
+      "source": "bakim_yukumlulugu_ort",
+      "label": "Bakmakla yükümlü kişi ortalaması",
+      "dtype": "numeric",
+      "role": "candidate",
+      "reason": "Müşteri yapısı, kapasite veya bölgesel koşul adayı",
+      "known_by_period_end": true,
+      "availability_lag_months": 0,
+      "family": "demografi",
+      "priority": 50
+    },
+    {
+      "name": "yuksek_egitim_orani",
+      "source": "yuksek_egitim_orani",
+      "label": "Lisans/yüksek lisans/doktora oranı",
+      "dtype": "numeric",
+      "role": "candidate",
+      "reason": "Müşteri yapısı, kapasite veya bölgesel koşul adayı",
+      "known_by_period_end": true,
+      "availability_lag_months": 0,
+      "family": "demografi",
+      "priority": 50
+    },
+    {
+      "name": "egitim_bilinmiyor_orani",
+      "source": "egitim_bilinmiyor_orani",
+      "label": "Eğitim bilgisi bilinmeyen oranı",
+      "dtype": "numeric",
+      "role": "candidate",
+      "reason": "Müşteri yapısı, kapasite veya bölgesel koşul adayı",
+      "known_by_period_end": true,
+      "availability_lag_months": 0,
+      "family": "demografi",
+      "priority": 50
+    },
+    {
+      "name": "evli_orani",
+      "source": "evli_orani",
+      "label": "Evli müşteri oranı",
+      "dtype": "numeric",
+      "role": "candidate",
+      "reason": "Müşteri yapısı, kapasite veya bölgesel koşul adayı",
+      "known_by_period_end": true,
+      "availability_lag_months": 0,
+      "family": "demografi",
+      "priority": 50
+    },
+    {
+      "name": "kaynak_ust_gelir_orani",
+      "source": "kaynak_ust_gelir_orani",
+      "label": "Kaynakta yıllık 80 bin USD ve üzeri bandının oranı; TL gelire çevrilmez",
+      "dtype": "numeric",
+      "role": "candidate",
+      "reason": "Müşteri yapısı, kapasite veya bölgesel koşul adayı",
+      "known_by_period_end": true,
+      "availability_lag_months": 0,
+      "family": "gelir_profili",
+      "priority": 50
+    },
+    {
+      "name": "kaynak_gelir_bilinmiyor_orani",
+      "source": "kaynak_gelir_bilinmiyor_orani",
+      "label": "Kaynak gelir bandı bilinmeyen oranı",
+      "dtype": "numeric",
+      "role": "candidate",
+      "reason": "Müşteri yapısı, kapasite veya bölgesel koşul adayı",
+      "known_by_period_end": true,
+      "availability_lag_months": 0,
+      "family": "gelir_profili",
+      "priority": 50
+    },
+    {
+      "name": "kaynak_pasif_ay_ort",
+      "source": "kaynak_pasif_ay_ort",
+      "label": "Kaynak profilindeki son 12 ay pasif ay ortalaması; simülasyonda başlangıçta bilinen profil",
+      "dtype": "numeric",
+      "role": "candidate",
+      "reason": "Müşteri yapısı, kapasite veya bölgesel koşul adayı",
+      "known_by_period_end": true,
+      "availability_lag_months": 0,
+      "family": "iliski_aktivite",
+      "priority": 50
+    },
+    {
+      "name": "emekli_maasi_orani",
+      "source": "emekli_maasi_orani",
+      "label": "Emekli maaşı müşterisi oranı",
+      "dtype": "numeric",
+      "role": "candidate",
+      "reason": "Müşteri yapısı, kapasite veya bölgesel koşul adayı",
+      "known_by_period_end": true,
+      "availability_lag_months": 0,
+      "family": "iliski_aktivite",
+      "priority": 50
+    },
+    {
+      "name": "ana_banka_orani",
+      "source": "ana_banka_orani",
+      "label": "Ana banka ilişkisi oranı",
+      "dtype": "numeric",
+      "role": "candidate",
+      "reason": "Müşteri yapısı, kapasite veya bölgesel koşul adayı",
+      "known_by_period_end": true,
+      "availability_lag_months": 0,
+      "family": "iliski_aktivite",
+      "priority": 50
+    },
+    {
+      "name": "portfoy_musteri_orani",
+      "source": "portfoy_musteri_orani",
+      "label": "portfoy_musteri_orani",
+      "dtype": "numeric",
+      "role": "review",
+      "reason": "Banka içi varlık/segment veya idari tanım; bağımsız potansiyel olarak iş incelemesi gerekli",
+      "family": "varlik_segmenti",
+      "production_proxy": true
+    },
+    {
+      "name": "ortalama_varlik_tl",
+      "source": "ortalama_varlik_tl",
+      "label": "ortalama_varlik_tl",
+      "dtype": "numeric",
+      "role": "review",
+      "reason": "Banka içi varlık/segment veya idari tanım; bağımsız potansiyel olarak iş incelemesi gerekli",
+      "family": "varlik_segmenti",
+      "production_proxy": true
+    },
+    {
+      "name": "segment_s1_orani",
+      "source": "segment_s1_orani",
+      "label": "segment_s1_orani",
+      "dtype": "numeric",
+      "role": "review",
+      "reason": "Banka içi varlık/segment veya idari tanım; bağımsız potansiyel olarak iş incelemesi gerekli",
+      "family": "varlik_segmenti",
+      "production_proxy": true
+    },
+    {
+      "name": "segment_s2_orani",
+      "source": "segment_s2_orani",
+      "label": "segment_s2_orani",
+      "dtype": "numeric",
+      "role": "review",
+      "reason": "Banka içi varlık/segment veya idari tanım; bağımsız potansiyel olarak iş incelemesi gerekli",
+      "family": "varlik_segmenti",
+      "production_proxy": true
+    },
+    {
+      "name": "segment_s5_orani",
+      "source": "segment_s5_orani",
+      "label": "segment_s5_orani",
+      "dtype": "numeric",
+      "role": "review",
+      "reason": "Banka içi varlık/segment veya idari tanım; bağımsız potansiyel olarak iş incelemesi gerekli",
+      "family": "varlik_segmenti",
+      "production_proxy": true
+    }
+  ],
+  "selection": {
+    "algorithm": "catboost",
+    "seed": 20261121,
+    "threads": 2,
+    "holdout_months": 3,
+    "validation_months": 3,
+    "windows": 3,
+    "min_train_months": 9,
+    "permutation_repeats": 8,
+    "min_stable_windows": 2,
+    "min_delta_wape": 1e-05,
+    "min_baseline_improvement": 0.01,
+    "min_informative_targets": 2,
+    "quality": {
+      "max_missing_fraction": 0.35,
+      "max_dominance": 0.995,
+      "max_categories": 100,
+      "correlation_threshold": 0.9
+    },
+    "catboost": {
+      "iterations": 300,
+      "depth": 4,
+      "learning_rate": 0.05,
+      "loss_function": "MAE",
+      "l2_leaf_reg": 10.0
+    }
+  }
+}

@@ -1,0 +1,13 @@
+﻿case_id,feature_ratio,bank_clusters,method,applicable,size_feasible,reference_score,mean_refit_ari,mean_subsample_ari,encoded_feature_counts,effective_mtry_values,reason
+top25_k5,0.25,5,urf_kmedoids,True,True,0.10895305631976378,0.43382324153588914,0.62769521131974682,[6],[1],
+top25_k5,0.25,5,gower_kmedoids,True,True,0.12919579159013109,0.7568384602003837,0.6705777549787334,[],[],
+top25_k5,0.25,5,kprototypes,False,False,,,,,,Numeric/categorical requirements are not satisfied
+top25_k7,0.25,7,urf_kmedoids,True,True,0.068712584779002717,0.55955107122998082,0.5381664702863469,[6],[1],
+top25_k7,0.25,7,gower_kmedoids,True,True,0.14038109184070863,0.90677200116917245,0.68000859038333861,[],[],
+top25_k7,0.25,7,kprototypes,False,False,,,,,,Numeric/categorical requirements are not satisfied
+top50_k5,0.5,5,urf_kmedoids,True,True,0.11057721676591444,0.34483342516656945,0.42752110843716323,[11],[2],
+top50_k5,0.5,5,gower_kmedoids,True,True,0.13832885068220166,0.74192469062250554,0.80205719892037775,[],[],
+top50_k5,0.5,5,kprototypes,False,False,,,,,,Numeric/categorical requirements are not satisfied
+top50_k7,0.5,7,urf_kmedoids,True,True,0.051421730196659812,0.4611218059735363,0.33274266693508558,[11],[2],
+top50_k7,0.5,7,gower_kmedoids,True,True,0.11827805205393993,0.65355048080612799,0.71342493000510754,[],[],
+top50_k7,0.5,7,kprototypes,False,False,,,,,,Numeric/categorical requirements are not satisfied

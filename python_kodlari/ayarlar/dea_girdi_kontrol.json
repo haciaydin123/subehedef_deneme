@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "base_config": "dea_v4.json",
+  "additional_inputs": [
+    {"name": "personel_fte", "source": "personel_fte_sentetik", "label": "Sentetik personel kapasitesi", "unit": "FTE", "transform": "identity"}
+  ],
+  "seed": 20261121,
+  "perturbation_repeats": 20,
+  "relative_perturbation": 0.01,
+  "stable_profile_relative_change": 0.05,
+  "material_score_change": 0.01,
+  "local_score_p95_review": 0.03,
+  "peer_removal_max_review": 0.10,
+  "correlation_review": 0.90,
+  "minimum_global_coverage": 1.0
+}

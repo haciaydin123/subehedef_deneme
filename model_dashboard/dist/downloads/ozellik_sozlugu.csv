@@ -1,0 +1,43 @@
+﻿alan,ozellik_grubu,aciklama,birim,yapisal_modelde,gecikmeli_modelde,kumeleme_adayi,zaman
+musteri_sayisi,kapasite,Şubedeki müşteri sayısı,kişi,True,True,True,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+personel_fte_sentetik,kapasite,Test portföyüne ait personel kapasitesi,FTE,True,True,True,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+ortalama_aylik_gelir_tl,gelir_profili,Müşterilerin aylık gelir ortalaması,TL,True,True,True,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+ortalama_yas,demografi,Müşteri yaş ortalaması,yıl,True,True,True,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+yas_std,demografi,Yaş standart sapması,yıl,True,True,True,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+yas_35_alti_orani,demografi,35 yaş altı müşteri oranı,0–1,True,True,True,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+yas_60_ustu_orani,demografi,60 yaş ve üzeri müşteri oranı,0–1,True,True,True,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+bakim_yukumlulugu_ort,demografi,Bakmakla yükümlü kişi ortalaması,kişi,True,True,True,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+yuksek_egitim_orani,demografi,Lisans/yüksek lisans/doktora oranı,0–1,True,True,True,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+egitim_bilinmiyor_orani,demografi,Eğitim bilgisi bilinmeyen oranı,0–1,True,True,True,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+evli_orani,demografi,Evli müşteri oranı,0–1,True,True,True,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+kaynak_ust_gelir_orani,gelir_profili,Kaynakta yıllık 80 bin USD ve üzeri bandının oranı; TL gelire çevrilmez,0–1,True,True,True,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+kaynak_gelir_bilinmiyor_orani,gelir_profili,Kaynak gelir bandı bilinmeyen oranı,0–1,True,True,True,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+kaynak_pasif_ay_ort,iliski_aktivite,Kaynak profilindeki son 12 ay pasif ay ortalaması; simülasyonda başlangıçta bilinen profil,ay,True,True,True,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+mobil_aktif_orani,iliski_aktivite,Mobil aktif müşteri oranı,0–1,True,True,True,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+maas_musterisi_orani,iliski_aktivite,Maaş müşterisi oranı,0–1,True,True,True,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+emekli_maasi_orani,iliski_aktivite,Emekli maaşı müşterisi oranı,0–1,True,True,True,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+ana_banka_orani,iliski_aktivite,Ana banka ilişkisi oranı,0–1,True,True,True,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+ekonomik_yapi_sentetik,bolgesel_kosullar,Sentetik ekonomik yapı; native categorical,kategori,True,True,True,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+sosyoekonomik_skor_sentetik,bolgesel_kosullar,Sentetik ekonomik çevre skoru; SEGE değildir,0–100,True,True,True,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+rakip_sube_sayisi_sentetik,bolgesel_kosullar,Sentetik rakip şube sayısı,adet,True,True,True,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+nufus_sentetik,bolgesel_kosullar,Sentetik ilçe nüfusu,kişi,True,True,True,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+takvim_ay_sin,takvim,Tahmin edilecek ayın bilinen takvim sinüsü,-1–1,True,True,False,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+takvim_ay_cos,takvim,Tahmin edilecek ayın bilinen takvim kosinüsü,-1–1,True,True,False,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+zaman_indeksi,takvim,Bilinen takvim sıra numarası,ay,True,True,False,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+portfoy_musteri_orani,varlik_segmenti,t ayındaki portföy müşteri payı; mevcut banka varlığından türetilir,0–1,False,True,False,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+segment_s1_orani,varlik_segmenti,t ayındaki S1 payı; varlık eşiğinden türetilir,0–1,False,True,False,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+segment_s2_orani,varlik_segmenti,t ayındaki S2 payı; varlık eşiğinden türetilir,0–1,False,True,False,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+segment_s5_orani,varlik_segmenti,t ayındaki S5 payı; varlık eşiğinden türetilir,0–1,False,True,False,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+ortalama_varlik_tl,varlik_segmenti,t ayındaki banka mevduat ve yatırım varlık ortalaması; mevcut üretim göstergesidir,TL,False,True,False,t ayı; takvim alanlarında t+1 ayı önceden bilinir
+tl_vadesiz_bakiye_t,gecmis_bakiye,Göstergeye ait t/t-1/geçmiş 3 ay veya son aylık büyüme; yalnızca ilgili gösterge modeline girer,TL,False,True,False,en geç t ayı
+tl_vadesiz_bakiye_t_eksi_1,gecmis_bakiye,Göstergeye ait t/t-1/geçmiş 3 ay veya son aylık büyüme; yalnızca ilgili gösterge modeline girer,TL,False,True,False,en geç t ayı
+tl_vadesiz_son3ay_ort_tl,gecmis_bakiye,Göstergeye ait t/t-1/geçmiş 3 ay veya son aylık büyüme; yalnızca ilgili gösterge modeline girer,TL,False,True,False,en geç t ayı
+tl_vadesiz_son_ay_buyume,gecmis_bakiye,Göstergeye ait t/t-1/geçmiş 3 ay veya son aylık büyüme; yalnızca ilgili gösterge modeline girer,oran,False,True,False,en geç t ayı
+tl_vadeli_bakiye_t,gecmis_bakiye,Göstergeye ait t/t-1/geçmiş 3 ay veya son aylık büyüme; yalnızca ilgili gösterge modeline girer,TL,False,True,False,en geç t ayı
+tl_vadeli_bakiye_t_eksi_1,gecmis_bakiye,Göstergeye ait t/t-1/geçmiş 3 ay veya son aylık büyüme; yalnızca ilgili gösterge modeline girer,TL,False,True,False,en geç t ayı
+tl_vadeli_son3ay_ort_tl,gecmis_bakiye,Göstergeye ait t/t-1/geçmiş 3 ay veya son aylık büyüme; yalnızca ilgili gösterge modeline girer,TL,False,True,False,en geç t ayı
+tl_vadeli_son_ay_buyume,gecmis_bakiye,Göstergeye ait t/t-1/geçmiş 3 ay veya son aylık büyüme; yalnızca ilgili gösterge modeline girer,oran,False,True,False,en geç t ayı
+kredi_bakiye_t,gecmis_bakiye,Göstergeye ait t/t-1/geçmiş 3 ay veya son aylık büyüme; yalnızca ilgili gösterge modeline girer,TL,False,True,False,en geç t ayı
+kredi_bakiye_t_eksi_1,gecmis_bakiye,Göstergeye ait t/t-1/geçmiş 3 ay veya son aylık büyüme; yalnızca ilgili gösterge modeline girer,TL,False,True,False,en geç t ayı
+kredi_son3ay_ort_tl,gecmis_bakiye,Göstergeye ait t/t-1/geçmiş 3 ay veya son aylık büyüme; yalnızca ilgili gösterge modeline girer,TL,False,True,False,en geç t ayı
+kredi_son_ay_buyume,gecmis_bakiye,Göstergeye ait t/t-1/geçmiş 3 ay veya son aylık büyüme; yalnızca ilgili gösterge modeline girer,oran,False,True,False,en geç t ayı

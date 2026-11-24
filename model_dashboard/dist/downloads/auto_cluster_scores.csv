@@ -1,0 +1,13 @@
+﻿candidate_id,method,feature_ratio,feature_count,bank_clusters,applicable,qualified,score,silhouette,refit_ari,subsample_ari,seed_ari,worst_group_silhouette,failed_gates
+top25_k5::urf_kmedoids,urf_kmedoids,0.25,6,5,True,False,0.41256806764378928,0.10719533025927698,0.50275066612325725,0.62769521131974693,0.48440310599394848,0.075498183216644907,refit_ari; seed_ari; worst_group_silhouette
+top25_k5::gower_kmedoids,gower_kmedoids,0.25,6,5,True,False,0.57291651930456666,0.12794341914254095,0.78387565792925229,0.67057775497873351,0.87817571625563573,0.050012828148374308,worst_group_silhouette
+top25_k5::kprototypes,kprototypes,0.25,6,5,False,False,,,,,,,Karma sayısal/kategorik girdi yok; yöntem bu senaryoda uygulanamaz.
+top25_k7::urf_kmedoids,urf_kmedoids,0.25,6,7,True,False,0.40578447931368944,0.068905505645705134,0.59953940407689843,0.53816647028634701,0.47139592550214438,0.023608237855195335,silhouette; refit_ari; subsample_ari; seed_ari; worst_group_silhouette
+top25_k7::gower_kmedoids,gower_kmedoids,0.25,6,7,True,False,0.6310553598668982,0.14100426773798119,0.89583977316556396,0.68000859038333861,1,0.05354668868419582,reference_size; validation_size; worst_group_silhouette
+top25_k7::kprototypes,kprototypes,0.25,6,7,False,False,,,,,,,Karma sayısal/kategorik girdi yok; yöntem bu senaryoda uygulanamaz.
+top50_k5::urf_kmedoids,urf_kmedoids,0.5,11,5,True,False,0.29252812141326995,0.10300779230922803,0.28315354517086144,0.42752110843716323,0.46532962039968195,0.078679637134953712,refit_ari; subsample_ari; seed_ari; worst_group_silhouette; worst_group_refit_ari
+top50_k5::gower_kmedoids,gower_kmedoids,0.5,11,5,True,False,0.62428966711498202,0.1380921789777268,0.77449237897189871,0.80205719892037775,1,0.067276622836650105,worst_group_silhouette
+top50_k5::kprototypes,kprototypes,0.5,11,5,False,False,,,,,,,Karma sayısal/kategorik girdi yok; yöntem bu senaryoda uygulanamaz.
+top50_k7::urf_kmedoids,urf_kmedoids,0.5,11,7,True,False,0.33034517103869471,0.04593150773734294,0.4619106399247942,0.33274266693508558,0.63204573337521441,0.014747985941591085,silhouette; refit_ari; subsample_ari; worst_group_silhouette; worst_group_refit_ari
+top50_k7::gower_kmedoids,gower_kmedoids,0.5,11,7,True,False,0.5723128951790396,0.11866001933724857,0.69452885625529404,0.71342493000510754,1,0.038982915536031434,reference_size; validation_size; worst_group_silhouette
+top50_k7::kprototypes,kprototypes,0.5,11,7,False,False,,,,,,,Karma sayısal/kategorik girdi yok; yöntem bu senaryoda uygulanamaz.

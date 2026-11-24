@@ -1,0 +1,9 @@
+﻿scenario,period,branches,calculated_branches,withheld_branches,eligible_clusters,clusters,required_n,coverage,mean_efficiency_own_coverage,strongly_efficient,withheld_cluster_ids
+customer,2026-09,200,200,0,5,5,12,1,0.73207567148802422,19,[]
+customer,2026-10,200,200,0,5,5,12,1,0.73099637802471507,16,[]
+customer,2026-11,200,200,0,5,5,12,1,0.7205711571696074,17,[]
+customer,2026-12,200,200,0,5,5,12,1,0.72861111465311057,16,[]
+customer_staff,2026-09,200,200,0,5,5,15,1,0.76028778322927748,28,[]
+customer_staff,2026-10,200,200,0,5,5,15,1,0.76350698017876883,26,[]
+customer_staff,2026-11,200,200,0,5,5,15,1,0.75684427765515716,27,[]
+customer_staff,2026-12,200,200,0,5,5,15,1,0.76377714434065258,29,[]

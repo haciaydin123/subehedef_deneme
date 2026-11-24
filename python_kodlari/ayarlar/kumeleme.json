@@ -1,0 +1,21 @@
+{
+  "primary_method": "urf_kmedoids",
+  "methods": ["urf_kmedoids", "gower_kmedoids", "kprototypes"],
+  "reference_period": null,
+  "evaluation_months": 3,
+  "k_values": [2, 3, 4, 5],
+  "feature_selection_ratios": [0.25, 0.5],
+  "bank_cluster_counts": [5, 7],
+  "mtry_ratio": 0.25,
+  "min_cluster_size": 12,
+  "seed": 20261121,
+  "threads": 2,
+  "starts": 3,
+  "pam_max_iter": 50,
+  "kprototypes_max_iter": 100,
+  "gamma": 1.0,
+  "subsample_fraction": 0.8,
+  "subsample_repeats": 5,
+  "seed_repeats": 3,
+  "forest": {"n_estimators": 400, "max_depth": 6, "min_samples_leaf": 3, "max_features": 0.25, "bootstrap": true}
+}

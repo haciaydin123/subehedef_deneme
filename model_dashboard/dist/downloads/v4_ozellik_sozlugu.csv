@@ -1,0 +1,66 @@
+﻿alan,ozellik_grubu,aciklama,birim,kumeleme_adayi,yapisal,gecikmeli,hareketli
+ana_banka_orani,iliski_aktivite,Ana banka ilişkisi oranı,0–1,True,True,True,True
+ay_ici_hizmet_verilen_musteri_sayisi,musteri_hareketi,Ay içinde herhangi bir gün hizmet verilen müşteri,kişi,False,False,False,True
+ayrilan_musteri_sayisi,musteri_hareketi,t ayında bankadan tam ayrılan müşteri,kişi,False,False,False,True
+bakim_yukumlulugu_ort,demografi,Bakmakla yükümlü kişi ortalaması,kişi,True,True,True,True
+devir_cikis_musteri_sayisi,musteri_hareketi,t ayında başka şubeye devredilen müşteri,kişi,False,False,False,True
+devir_giris_musteri_sayisi,musteri_hareketi,t ayında başka şubeden gelen müşteri,kişi,False,False,False,True
+diger_bankadan_kaynak_girisi_tl,kaynak_hareketi,t ayında diğer bankalardan varlık girişi,TL,False,False,False,True
+diger_bankaya_kaynak_cikisi_tl,kaynak_hareketi,t ayında diğer bankalara kısmi varlık çıkışı,TL,False,False,False,True
+egitim_bilinmiyor_orani,demografi,Eğitim bilgisi bilinmeyen oranı,0–1,True,True,True,True
+ekonomik_yapi_sentetik,bolgesel_kosullar,Sentetik ekonomik yapı; native categorical,kategori,True,True,True,True
+emekli_maasi_orani,iliski_aktivite,Emekli maaşı müşterisi oranı,0–1,True,True,True,True
+evli_orani,demografi,Evli müşteri oranı,0–1,True,True,True,True
+kaynak_gelir_bilinmiyor_orani,gelir_profili,Kaynak gelir bandı bilinmeyen oranı,0–1,True,True,True,True
+kaynak_pasif_ay_ort,iliski_aktivite,Kaynak profilindeki son 12 ay pasif ay ortalaması; simülasyonda başlangıçta bilinen profil,ay,True,True,True,True
+kaynak_ust_gelir_orani,gelir_profili,Kaynakta yıllık 80 bin USD ve üzeri bandının oranı; TL gelire çevrilmez,0–1,True,True,True,True
+kredi_ay_sonu_bakiye_tl,donem_sonu,t ayında bilinen gösterge veya geçmiş pencere alanı,TL,False,False,False,True
+kredi_bakiye_t,gecmis_bakiye,t ayında bilinen gösterge veya geçmiş pencere alanı,TL,False,False,True,True
+kredi_bakiye_t_eksi_1,gecmis_bakiye,t ayında bilinen gösterge veya geçmiş pencere alanı,TL,False,False,True,True
+kredi_devir_haric_net_degisim_tl,kaynak_hareketi,t ayında bilinen gösterge veya geçmiş pencere alanı,TL,False,False,False,True
+kredi_devir_net_degisim_tl,kaynak_hareketi,t ayında bilinen gösterge veya geçmiş pencere alanı,TL,False,False,False,True
+kredi_kapanis_ortalama_farki_tl,donem_sonu,t ayında bilinen gösterge veya geçmiş pencere alanı,TL,False,False,False,True
+kredi_son3ay_ort_tl,gecmis_bakiye,t ayında bilinen gösterge veya geçmiş pencere alanı,TL,False,False,True,True
+kredi_son_ay_buyume,gecmis_bakiye,t ayında bilinen gösterge veya geçmiş pencere alanı,oran,False,False,True,True
+maas_musterisi_orani,iliski_aktivite,Maaş müşterisi oranı,0–1,True,True,True,True
+mobil_aktif_orani,iliski_aktivite,Mobil aktif müşteri oranı,0–1,True,True,True,True
+musteri_gun,musteri_hareketi,t ayında şubedeki aktif müşteri-günü,müşteri-gün,False,False,False,True
+musteri_gun_ay_sonu_orani,musteri_hareketi,Müşteri-günü / takvim günü / ay sonu aktif müşteri,oran,False,False,False,True
+musteri_sayisi,kapasite,Şubedeki müşteri sayısı,kişi,True,True,True,True
+musteri_sayisi_degisim,musteri_hareketi,Aktif müşteri sayısının t ile t-1 farkı,kişi,False,False,False,True
+nufus_sentetik,bolgesel_kosullar,Sentetik ilçe nüfusu,kişi,True,True,True,True
+ortalama_aylik_gelir_tl,gelir_profili,Müşterilerin aylık gelir ortalaması,TL,True,True,True,True
+ortalama_iliski_skoru,iliski_aktivite,Ay sonu aktif müşterilerin ilişki skoru ortalaması,skor,True,False,False,True
+ortalama_varlik_tl,varlik_segmenti,t ayındaki banka mevduat ve yatırım varlık ortalaması; mevcut üretim göstergesidir,TL,False,False,True,True
+ortalama_yas,demografi,Müşteri yaş ortalaması,yıl,True,True,True,True
+personel_fte_sentetik,kapasite,Test portföyüne ait personel kapasitesi,FTE,True,True,True,True
+portfoy_musteri_orani,varlik_segmenti,t ayındaki portföy müşteri payı; mevcut banka varlığından türetilir,0–1,False,False,True,True
+rakip_sube_sayisi_sentetik,bolgesel_kosullar,Sentetik rakip şube sayısı,adet,True,True,True,True
+segment_s1_orani,varlik_segmenti,t ayındaki S1 payı; varlık eşiğinden türetilir,0–1,False,False,True,True
+segment_s2_orani,varlik_segmenti,t ayındaki S2 payı; varlık eşiğinden türetilir,0–1,False,False,True,True
+segment_s5_orani,varlik_segmenti,t ayındaki S5 payı; varlık eşiğinden türetilir,0–1,False,False,True,True
+sosyoekonomik_skor_sentetik,bolgesel_kosullar,Sentetik ekonomik çevre skoru; SEGE değildir,0–100,True,True,True,True
+takvim_ay_cos,takvim,Tahmin edilecek ayın bilinen takvim kosinüsü,-1–1,False,True,True,True
+takvim_ay_sin,takvim,Tahmin edilecek ayın bilinen takvim sinüsü,-1–1,False,True,True,True
+tl_vadeli_ay_sonu_bakiye_tl,donem_sonu,t ayında bilinen gösterge veya geçmiş pencere alanı,TL,False,False,False,True
+tl_vadeli_bakiye_t,gecmis_bakiye,t ayında bilinen gösterge veya geçmiş pencere alanı,TL,False,False,True,True
+tl_vadeli_bakiye_t_eksi_1,gecmis_bakiye,t ayında bilinen gösterge veya geçmiş pencere alanı,TL,False,False,True,True
+tl_vadeli_devir_haric_net_degisim_tl,kaynak_hareketi,t ayında bilinen gösterge veya geçmiş pencere alanı,TL,False,False,False,True
+tl_vadeli_devir_net_degisim_tl,kaynak_hareketi,t ayında bilinen gösterge veya geçmiş pencere alanı,TL,False,False,False,True
+tl_vadeli_kapanis_ortalama_farki_tl,donem_sonu,t ayında bilinen gösterge veya geçmiş pencere alanı,TL,False,False,False,True
+tl_vadeli_son3ay_ort_tl,gecmis_bakiye,t ayında bilinen gösterge veya geçmiş pencere alanı,TL,False,False,True,True
+tl_vadeli_son_ay_buyume,gecmis_bakiye,t ayında bilinen gösterge veya geçmiş pencere alanı,oran,False,False,True,True
+tl_vadesiz_ay_sonu_bakiye_tl,donem_sonu,t ayında bilinen gösterge veya geçmiş pencere alanı,TL,False,False,False,True
+tl_vadesiz_bakiye_t,gecmis_bakiye,t ayında bilinen gösterge veya geçmiş pencere alanı,TL,False,False,True,True
+tl_vadesiz_bakiye_t_eksi_1,gecmis_bakiye,t ayında bilinen gösterge veya geçmiş pencere alanı,TL,False,False,True,True
+tl_vadesiz_devir_haric_net_degisim_tl,kaynak_hareketi,t ayında bilinen gösterge veya geçmiş pencere alanı,TL,False,False,False,True
+tl_vadesiz_devir_net_degisim_tl,kaynak_hareketi,t ayında bilinen gösterge veya geçmiş pencere alanı,TL,False,False,False,True
+tl_vadesiz_kapanis_ortalama_farki_tl,donem_sonu,t ayında bilinen gösterge veya geçmiş pencere alanı,TL,False,False,False,True
+tl_vadesiz_son3ay_ort_tl,gecmis_bakiye,t ayında bilinen gösterge veya geçmiş pencere alanı,TL,False,False,True,True
+tl_vadesiz_son_ay_buyume,gecmis_bakiye,t ayında bilinen gösterge veya geçmiş pencere alanı,oran,False,False,True,True
+yas_35_alti_orani,demografi,35 yaş altı müşteri oranı,0–1,True,True,True,True
+yas_60_ustu_orani,demografi,60 yaş ve üzeri müşteri oranı,0–1,True,True,True,True
+yas_std,demografi,Yaş standart sapması,yıl,True,True,True,True
+yeni_musteri_sayisi,musteri_hareketi,t ayında şubeye kazanılan müşteri,kişi,False,False,False,True
+yuksek_egitim_orani,demografi,Lisans/yüksek lisans/doktora oranı,0–1,True,True,True,True
+zaman_indeksi,takvim,Bilinen takvim sıra numarası,ay,False,True,True,True

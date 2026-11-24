@@ -1,0 +1,17 @@
+﻿candidate_id,case_id,method,group,silhouette,threshold,passed
+top25_k5::urf_kmedoids,top25_k5,urf_kmedoids,DIGER_ILLER,0.075498183216644907,0.10000000000000001,False
+top25_k5::urf_kmedoids,top25_k5,urf_kmedoids,UC_BUYUK_IL,0.15474105082322506,0.10000000000000001,True
+top25_k5::gower_kmedoids,top25_k5,gower_kmedoids,DIGER_ILLER,0.050012828148374308,0.10000000000000001,False
+top25_k5::gower_kmedoids,top25_k5,gower_kmedoids,UC_BUYUK_IL,0.24483930563379092,0.10000000000000001,True
+top25_k7::urf_kmedoids,top25_k7,urf_kmedoids,DIGER_ILLER,0.023608237855195335,0.10000000000000001,False
+top25_k7::urf_kmedoids,top25_k7,urf_kmedoids,UC_BUYUK_IL,0.13685140733146983,0.10000000000000001,True
+top25_k7::gower_kmedoids,top25_k7,gower_kmedoids,DIGER_ILLER,0.05354668868419582,0.10000000000000001,False
+top25_k7::gower_kmedoids,top25_k7,gower_kmedoids,UC_BUYUK_IL,0.27219063631865925,0.10000000000000001,True
+top50_k5::urf_kmedoids,top50_k5,urf_kmedoids,DIGER_ILLER,0.078679637134953712,0.10000000000000001,False
+top50_k5::urf_kmedoids,top50_k5,urf_kmedoids,UC_BUYUK_IL,0.13950002507063947,0.10000000000000001,True
+top50_k5::gower_kmedoids,top50_k5,gower_kmedoids,DIGER_ILLER,0.067276622836650105,0.10000000000000001,False
+top50_k5::gower_kmedoids,top50_k5,gower_kmedoids,UC_BUYUK_IL,0.24431551318934183,0.10000000000000001,True
+top50_k7::urf_kmedoids,top50_k7,urf_kmedoids,DIGER_ILLER,0.014747985941591085,0.10000000000000001,False
+top50_k7::urf_kmedoids,top50_k7,urf_kmedoids,UC_BUYUK_IL,0.092706790430970715,0.10000000000000001,False
+top50_k7::gower_kmedoids,top50_k7,gower_kmedoids,DIGER_ILLER,0.038982915536031434,0.10000000000000001,False
+top50_k7::gower_kmedoids,top50_k7,gower_kmedoids,UC_BUYUK_IL,0.23817567503907425,0.10000000000000001,True

@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "input": {
+    "path": "../../outputs/banka_test_verisi_v4/sube_model_girdileri_aylik.csv",
+    "keys": {"branch": "sube_id", "period": "donem", "group": "buyuk_sehir_grubu"},
+    "filters": {"is_birimi": ["BIREYSEL"]}
+  },
+  "inputs": [
+    {"name": "ortalama_aktif_musteri", "source": "musteri_gun", "transform": "divide_by_calendar_days", "label": "Aylık ortalama aktif müşteri sayısı", "unit": "müşteri"}
+  ],
+  "outputs": [
+    {"name": "tl_vadesiz", "source": "tl_vadesiz_ort_bakiye_tl", "label": "TL vadesiz aylık ortalama bakiye", "unit": "TL"},
+    {"name": "tl_vadeli", "source": "tl_vadeli_ort_bakiye_tl", "label": "TL vadeli aylık ortalama bakiye", "unit": "TL"},
+    {"name": "kredi", "source": "kredi_ort_bakiye_tl", "label": "Kredi aylık ortalama bakiye", "unit": "TL"}
+  ],
+  "model": "output_oriented_CRS_two_phase",
+  "vrs_sensitivity": true,
+  "min_units_policy": "max(m*s,3*(m+s))",
+  "insufficient_cluster_policy": "error",
+  "tolerance": 0.0000001,
+  "high_radial_growth_flag": 1.0,
+  "high_radial_efficiency_share_flag": 0.5
+}

@@ -1,0 +1,9 @@
+{
+  "validation_periods": ["2026-10", "2026-11"],
+  "evaluation_periods": ["2026-12"],
+  "weights": {"silhouette": 0.30, "refit_ari": 0.30, "subsample_ari": 0.25, "seed_ari": 0.15},
+  "thresholds": {"min_cluster_size": 12, "silhouette": 0.10, "refit_ari": 0.60, "subsample_ari": 0.60, "seed_ari": 0.60, "worst_group_refit_ari": 0.40, "worst_group_silhouette": 0.10},
+  "dea_coverage": {"base_config": "dea_v4.json", "input_audit_config": "dea_girdi_kontrol.json", "require_full_coverage": true},
+  "incumbent": "top50_k5::urf_kmedoids",
+  "minimum_gain": 0.02
+}

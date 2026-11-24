@@ -1,0 +1,6 @@
+﻿field,source,role,n,missing_or_non_numeric,nonfinite_nonmissing,zero,negative,unique,min,max
+ortalama_aktif_musteri,musteri_gun,input_candidate,5200,0,0,0,0,1875,560,6718
+personel_fte,personel_fte_sentetik,input_candidate,5200,0,0,0,0,7,1,8
+tl_vadesiz,tl_vadesiz_ort_bakiye_tl,output,5200,0,0,0,0,5200,403174.83000000002,32070777.800000001
+tl_vadeli,tl_vadeli_ort_bakiye_tl,output,5200,0,0,0,0,5200,1066259.02,42355447.969999999
+kredi,kredi_ort_bakiye_tl,output,5200,0,0,0,0,5200,1047107.78,32386192.239999998

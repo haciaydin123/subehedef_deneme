@@ -1,0 +1,154 @@
+[
+  {
+    "name": "musteri_sayisi",
+    "missing_fraction": 0.0,
+    "median": 53.0,
+    "training_median": 46.0,
+    "median_shift_in_training_iqr": 0.3333333333333333
+  },
+  {
+    "name": "ortalama_aylik_gelir_tl",
+    "missing_fraction": 0.0,
+    "median": 58236.875,
+    "training_median": 55714.494999999995,
+    "median_shift_in_training_iqr": 0.1858506581157792
+  },
+  {
+    "name": "ortalama_yas",
+    "missing_fraction": 0.0,
+    "median": 48.4150195,
+    "training_median": 47.205882,
+    "median_shift_in_training_iqr": 0.6961690156820263
+  },
+  {
+    "name": "ana_banka_orani",
+    "missing_fraction": 0.0,
+    "median": 0.6871372549019608,
+    "training_median": 0.7073170731707317,
+    "median_shift_in_training_iqr": 0.22197800095647993
+  },
+  {
+    "name": "bakim_yukumlulugu_ort",
+    "missing_fraction": 0.0,
+    "median": 2.341265397536394,
+    "training_median": 2.3475241545893724,
+    "median_shift_in_training_iqr": 0.023604455171232837
+  },
+  {
+    "name": "egitim_bilinmiyor_orani",
+    "missing_fraction": 0.0,
+    "median": 0.14845423936333027,
+    "training_median": 0.14705882352941177,
+    "median_shift_in_training_iqr": 0.021047386756868784
+  },
+  {
+    "name": "ekonomik_yapi_sentetik",
+    "missing_fraction": 0.0,
+    "unseen_category_fraction": 0.0
+  },
+  {
+    "name": "emekli_maasi_orani",
+    "missing_fraction": 0.0,
+    "median": 0.05128205128205128,
+    "training_median": 0.05333333333333334,
+    "median_shift_in_training_iqr": 0.050349650349650485
+  },
+  {
+    "name": "evli_orani",
+    "missing_fraction": 0.0,
+    "median": 0.46027742749054223,
+    "training_median": 0.4634146341463415,
+    "median_shift_in_training_iqr": 0.03298512423121724
+  },
+  {
+    "name": "kaynak_gelir_bilinmiyor_orani",
+    "missing_fraction": 0.0,
+    "median": 0.10551619433198381,
+    "training_median": 0.10869565217391304,
+    "median_shift_in_training_iqr": 0.05498198975191504
+  },
+  {
+    "name": "kaynak_pasif_ay_ort",
+    "missing_fraction": 0.0,
+    "median": 2.3333333333333335,
+    "training_median": 2.338235294117647,
+    "median_shift_in_training_iqr": 0.025549613784907825
+  },
+  {
+    "name": "maas_musterisi_orani",
+    "missing_fraction": 0.0,
+    "median": 0.47902,
+    "training_median": 0.478261,
+    "median_shift_in_training_iqr": 0.00796942429046934
+  },
+  {
+    "name": "mobil_aktif_orani",
+    "missing_fraction": 0.0,
+    "median": 0.553191,
+    "training_median": 0.571429,
+    "median_shift_in_training_iqr": 0.20294039919326784
+  },
+  {
+    "name": "nufus_sentetik",
+    "missing_fraction": 0.0,
+    "median": 52663.5,
+    "training_median": 52663.5,
+    "median_shift_in_training_iqr": 0.0
+  },
+  {
+    "name": "personel_fte_sentetik",
+    "missing_fraction": 0.0,
+    "median": 2.0,
+    "training_median": 2.0,
+    "median_shift_in_training_iqr": 0.0
+  },
+  {
+    "name": "rakip_sube_sayisi_sentetik",
+    "missing_fraction": 0.0,
+    "median": 14.0,
+    "training_median": 14.0,
+    "median_shift_in_training_iqr": 0.0
+  },
+  {
+    "name": "sosyoekonomik_skor_sentetik",
+    "missing_fraction": 0.0,
+    "median": 44.61,
+    "training_median": 44.61,
+    "median_shift_in_training_iqr": 0.0
+  },
+  {
+    "name": "yas_35_alti_orani",
+    "missing_fraction": 0.0,
+    "median": 0.040508665777868935,
+    "training_median": 0.05970149253731343,
+    "median_shift_in_training_iqr": 0.39311021951933633
+  },
+  {
+    "name": "yas_60_ustu_orani",
+    "missing_fraction": 0.0,
+    "median": 0.08179993308798929,
+    "training_median": 0.06451612903225806,
+    "median_shift_in_training_iqr": 0.3685012574630329
+  },
+  {
+    "name": "yas_std",
+    "missing_fraction": 0.0,
+    "median": 7.890174315112666,
+    "training_median": 7.959515950824116,
+    "median_shift_in_training_iqr": 0.06550575411727315
+  },
+  {
+    "name": "yuksek_egitim_orani",
+    "missing_fraction": 0.0,
+    "median": 0.40310544053923925,
+    "training_median": 0.40384615384615385,
+    "median_shift_in_training_iqr": 0.008844915762544679
+  },
+  {
+    "name": "ortalama_iliski_skoru",
+    "missing_fraction": 0.0,
+    "median": 66.558107,
+    "training_median": 67.433177,
+    "median_shift_in_training_iqr": 0.31385712734487187
+  }
+]
